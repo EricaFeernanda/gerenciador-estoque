@@ -1,5 +1,5 @@
 <?php 
-include "../funcoes/conexao.php";
+include "../db/conexao.php";
 
 $produto = $_POST ['produto'];
 $descricao = $_POST ['descricao'];

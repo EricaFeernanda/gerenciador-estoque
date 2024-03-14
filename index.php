@@ -40,25 +40,28 @@
             <tr>               
                 <th>Nome do Produto</th>
                 <th>Descrição</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody id=listaProdutos>
             <?php 
-            include "../projeto/funcoes/conexao.php";
+            include "../projeto/db/conexao.php";
 
-            $sql = "SELECT nome, descricao FROM produto";
+            $sql = "SELECT idproduto, nome, descricao FROM produto";
             $resultado = $conn->query($sql);
             
             if ($resultado->num_rows > 0) {
                 while($row = $resultado->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row['nome'] . "</td>";
-                    echo "<td>" . $row['descricao'] . "</td>" ;
+                    echo "<td>" . $row['descricao'] . "</td>";
+                    echo "<td> <a href = 'edicaoProduto.php?idproduto={$row['idproduto']}'> Editar </a> <a href = '#'> Excluir </a> </td>" ;
                     echo "</tr>";
                 }
             } else {
                 echo "0 results";
-            }
+            } 
+
             ?>
             
         </tbody>
